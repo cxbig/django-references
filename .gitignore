@@ -1,0 +1,10 @@
+# IDE
+**/.idea
+
+# Environments
+**/.venv
+**/.env
+**/__pycache__/
+
+# DB
+**/*.sqlite3

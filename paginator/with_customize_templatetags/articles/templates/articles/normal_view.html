@@ -1,0 +1,59 @@
+{% extends 'shared/frame.html' %}
+{% load articles_tags %}
+
+{% block body %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>{{ page_title | default_if_none:'Article List' }}</h2>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Filters">
+          <a class="{% get_filter_btn_class 'all' %}" href="{% url 'normal_view' %}">All</a>
+          <a class="{% get_filter_btn_class 'published' %}" href="{% url 'normal_view' %}?published=True">Published</a>
+          <a class="{% get_filter_btn_class 'unpublished' %}"
+             href="{% url 'normal_view' %}?published=False">Unpublished</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Published</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated At</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for article in articles %}
+            <tr>
+              <th scope="row">{{ article.pk }}</th>
+              <td>{{ article.title }}</td>
+              <td>{{ article.published }}</td>
+              <td>{{ article.created_at | date:'Y-m-d H:i' }}</td>
+              <td>{{ article.updated_at | date:'Y-m-d H:i' }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+
+{% endblock %}

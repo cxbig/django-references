@@ -1,0 +1,30 @@
+{% load paginator_tags %}
+
+<ul class="pagination">
+  <li class="page-item">
+    {% if paginator.has_previous %}
+      <a class="page-link" href="{% render_paginator_url paginator.previous_page_number %}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    {% else %}
+      <span class="page-link" aria-hidden="true">&laquo;</span>
+    {% endif %}
+  </li>
+  {% get_proper_elided_page_range paginator.number as page_range %}
+  {% for i in page_range %}
+    {% if i.is_link %}
+      <li class="{{ i.li_class }}"><a class="page-link" href="{{ i.url }}">{{ i.text }}</a></li>
+    {% else %}
+      <li class="{{ i.li_class }}"><span class="page-link">{{ i.text }}</span></li>
+    {% endif %}
+  {% endfor %}
+  <li class="page-item">
+    {% if paginator.has_next %}
+      <a class="page-link" href="{% render_paginator_url paginator.next_page_number %}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    {% else %}
+      <span class="page-link" aria-hidden="true">&raquo;</span>
+    {% endif %}
+  </li>
+</ul>

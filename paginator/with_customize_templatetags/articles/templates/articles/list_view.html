@@ -42,7 +42,7 @@
           </tr>
           </thead>
           <tbody>
-          {% for article in articles %}
+          {% for article in object_list %}
             <tr>
               <th scope="row">{{ article.pk }}</th>
               <td>{{ article.title }}</td>
@@ -57,5 +57,13 @@
     </div>
   </div>
   <br>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {% include 'shared/paginator/default.html' with paginator=page_obj %}
+      </div>
+    </div>
+  </div>
 
 {% endblock %}

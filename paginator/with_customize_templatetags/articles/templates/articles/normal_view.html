@@ -56,4 +56,12 @@
   </div>
   <br>
 
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {% include 'shared/paginator/default.html' with paginator=articles %}
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

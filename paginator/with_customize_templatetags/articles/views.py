@@ -30,7 +30,6 @@ def normal_view(request):
 class ArticleListView(ListView):
     model = Article
     template_name = 'articles/list_view.html'
-    context_object_name = 'articles'
     paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):

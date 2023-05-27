@@ -7,7 +7,7 @@ from django.db import migrations, models
 
 def add_initial_articles(apps, schema_editor):
     article_model = apps.get_model('articles', 'Article')
-    for i in range(100):
+    for i in range(1000):
         padding_num = str(i).rjust(3, '0')
         title = f'Title {padding_num}'
         content = f'Content {padding_num}'
